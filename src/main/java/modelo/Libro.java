@@ -17,10 +17,10 @@ public class Libro{
     }
 
     public Libro(int id, String titulo, int aniopublicacion, Autor autor) {
-        this.id = id;
-        this.titulo = titulo;
-        this.aniopublicacion = aniopublicacion;
-        this.autor = autor;
+        setId(id);
+        setTitulo(titulo);
+        setAniopublicacion(aniopublicacion);
+        setAutor(autor);
     }
 
     public int getId() {
@@ -68,6 +68,4 @@ public class Libro{
     public String toString() {
         return "Libro{" + "id=" + id + ", titulo=" + titulo + ", aniopublicacion=" + aniopublicacion + ", autor=" + autor + '}';
     }
-
-    
 }
