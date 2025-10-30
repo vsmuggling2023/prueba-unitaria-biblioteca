@@ -39,18 +39,19 @@ public class Libro{
     }
 
     public void setTitulo(String titulo) {
-        if (titulo == null || titulo.length() > 100){
-            throw new IllegalArgumentException("El titulo no puede ser nulo, ni tampoco puede superar los 100 caracteres");
+        if (titulo == null || titulo.trim().isEmpty() || titulo.length() > 100) {
+            throw new IllegalArgumentException("El titulo no puede estar vacío, ser nulo ni superar los 100 caracteres");
         }
         this.titulo = titulo;
     }
+
 
     public int getAniopublicacion() {
         return aniopublicacion;
     }
 
     public void setAniopublicacion(int aniopublicacion) {
-        if(aniopublicacion > 1450 || aniopublicacion < 2025){
+        if(aniopublicacion < 1450 || aniopublicacion > 2025){
             throw new IllegalArgumentException("El año de publicación, no puede ser menor de 1450 y mayor al año actual: 2025");
         }
         this.aniopublicacion = aniopublicacion;
@@ -61,8 +62,12 @@ public class Libro{
     }
 
     public void setAutor(Autor autor) {
+        if (autor == null) {
+            throw new IllegalArgumentException("El autor no puede ser nulo");
+        }
         this.autor = autor;
     }
+
 
     @Override
     public String toString() {

@@ -44,11 +44,25 @@ public class Biblioteca{
         this.libros = libros;
     }
      
-    public void agregarLibros(Libro libro){
-        if(libro == null){
+    public void agregarLibros(Libro libro) {
+        if (libro == null) {
             throw new IllegalArgumentException("No se puede agregar un libro nulo.");
         }
-        this.libros.add(libro);
+
+        // 🚫 Limitar a 100 libros
+        if (libros.size() >= 100) {
+            throw new IllegalArgumentException("No se pueden agregar más de 100 libros a la biblioteca.");
+        }
+
+        // 🚫 Evitar duplicados (mismo título y autor)
+        for (Libro l : libros) {
+            if (l.getTitulo().equalsIgnoreCase(libro.getTitulo()) &&
+                l.getAutor().getNombre().equalsIgnoreCase(libro.getAutor().getNombre())) {
+                throw new IllegalArgumentException("El libro '" + libro.getTitulo() + "' ya existe en la biblioteca.");
+            }
+        }
+
+        libros.add(libro);
         System.out.println("Libro agregado: " + libro.getTitulo());
     }
     
