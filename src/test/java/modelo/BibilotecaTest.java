@@ -166,13 +166,11 @@ public class BibilotecaTest {
         Biblioteca biblioteca = new Biblioteca(1);
         Autor autor = new Autor(1, "Gabriel García Márquez", "Colombiana");
 
-        // Actualizar libro que no existe
         Exception ex1 = assertThrows(IllegalArgumentException.class, () -> {
             biblioteca.actualizarLibro(99, "Título nuevo", 2000, autor);
         });
         assertTrue(ex1.getMessage().toLowerCase().contains("no se encontró"));
 
-        // Eliminar libro que no existe
         Exception ex2 = assertThrows(IllegalArgumentException.class, () -> {
             biblioteca.eliminarLibro(99);
         });
