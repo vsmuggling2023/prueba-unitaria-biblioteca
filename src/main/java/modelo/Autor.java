@@ -18,8 +18,8 @@ public class Autor {
 
     public Autor(int id, String nombre, String nacionalidad) {
         this.id = id;
-        this.nombre = nombre;
-        this.nacionalidad = nacionalidad;
+        setNombre(nombre);
+        setNacionalidad(nacionalidad);
     }
 
     public int getId() {
@@ -35,14 +35,21 @@ public class Autor {
     }
 
     public void setNombre(String nombre) {
+        if (nombre == null || nombre.length() > 60){
+            throw new IllegalArgumentException("El nombre NO debe estar vacio o no puede superar los 60 caracteres");
+        }
         this.nombre = nombre;
     }
 
     public String getNacionalidad() {
         return nacionalidad;
     }
+    
 
     public void setNacionalidad(String nacionalidad) {
+        if (nacionalidad == null || nacionalidad.isEmpty()){
+            throw new IllegalArgumentException("La nacionalidad no debe estar vacia o no debe ser nula");
+        }
         this.nacionalidad = nacionalidad;
     }
 
