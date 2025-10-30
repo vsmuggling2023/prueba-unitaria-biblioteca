@@ -28,6 +28,9 @@ public class Libro{
     }
 
     public void setId(int id) {
+        if (id < 0){
+            throw new IllegalArgumentException("La id debe ser mayor a 0");
+        }
         this.id = id;
     }
 
@@ -36,6 +39,9 @@ public class Libro{
     }
 
     public void setTitulo(String titulo) {
+        if (titulo == null || titulo.length() > 100){
+            throw new IllegalArgumentException("El titulo no puede ser nulo, ni tampoco puede superar los 100 caracteres");
+        }
         this.titulo = titulo;
     }
 
@@ -44,6 +50,9 @@ public class Libro{
     }
 
     public void setAniopublicacion(int aniopublicacion) {
+        if(aniopublicacion > 1450 || aniopublicacion < 2025){
+            throw new IllegalArgumentException("El año de publicación, no puede ser menor de 1450 y mayor al año actual: 2025");
+        }
         this.aniopublicacion = aniopublicacion;
     }
 
