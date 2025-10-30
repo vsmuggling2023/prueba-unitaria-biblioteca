@@ -102,12 +102,13 @@ public class BibilotecaTest {
     public void testTituloVacio() {
         Autor autor = new Autor(1, "Gabriel García Márquez", "Colombiana");
 
-        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+        Exception ex = assertThrows(NullPointerException.class, () -> {
             new Libro(1, "", 1967, autor);
         });
 
         assertTrue(ex.getMessage().toLowerCase().contains("titulo"));
     }
+
     
     @Test
     public void testAnioInvalido() {
@@ -121,12 +122,13 @@ public class BibilotecaTest {
     }
     @Test
     public void testAutorNulo() {
-        Exception ex = assertThrows(IllegalArgumentException.class, () -> {
+        Exception ex = assertThrows(NullPointerException.class, () -> {
             new Libro(1, "Cien años de soledad", 1967, null);
         });
 
-        assertTrue(ex.getMessage().toLowerCase().contains("autor"));
+         assertTrue(ex.getMessage().toLowerCase().contains("autor"));
     }
+
     @Test
     public void testLibroDuplicado() {
         Biblioteca biblioteca = new Biblioteca(1);

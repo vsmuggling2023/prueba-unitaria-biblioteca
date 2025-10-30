@@ -39,8 +39,8 @@ public class Libro{
     }
 
     public void setTitulo(String titulo) {
-        if (titulo == null || titulo.trim().isEmpty() || titulo.length() > 100) {
-            throw new IllegalArgumentException("El titulo no puede estar vacío, ser nulo ni superar los 100 caracteres");
+        if (titulo == null || titulo.trim().isEmpty()) {
+            throw new NullPointerException("El titulo no puede ser nulo o vacío");
         }
         this.titulo = titulo;
     }
@@ -62,11 +62,18 @@ public class Libro{
     }
 
     public void setAutor(Autor autor) {
-        if (autor == null) {
-            throw new IllegalArgumentException("El autor no puede ser nulo");
-        }
-        this.autor = autor;
+    if (autor == null) {
+        throw new NullPointerException("El autor no puede ser nulo");
     }
+
+    if (autor.getNombre() == null || autor.getNombre().trim().isEmpty() ||
+        autor.getNacionalidad() == null || autor.getNacionalidad().trim().isEmpty()) {
+        throw new NullPointerException("El autor no puede tener nombre o nacionalidad vacíos");
+    }
+
+    this.autor = autor;
+}
+
 
 
     @Override

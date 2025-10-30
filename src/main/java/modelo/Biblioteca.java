@@ -46,7 +46,7 @@ public class Biblioteca{
      
     public void agregarLibros(Libro libro) {
         if (libro == null) {
-            throw new IllegalArgumentException("No se puede agregar un libro nulo.");
+            throw new NullPointerException("No se puede agregar un libro nulo.");
         }
 
         // 🚫 Limitar a 100 libros

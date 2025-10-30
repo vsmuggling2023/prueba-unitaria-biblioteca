@@ -35,8 +35,11 @@ public class Autor {
     }
 
     public void setNombre(String nombre) {
-        if (nombre == null || nombre.length() > 60){
-            throw new IllegalArgumentException("El nombre NO debe estar vacio o no puede superar los 60 caracteres");
+        if (nombre.length() > 60){
+            throw new IllegalArgumentException("El nombre no puede superar los 60 caracteres");
+        }
+        if (nombre == null){
+            throw new NullPointerException("Error Nulo");
         }
         this.nombre = nombre;
     }
@@ -47,8 +50,11 @@ public class Autor {
     
 
     public void setNacionalidad(String nacionalidad) {
-        if (nacionalidad == null || nacionalidad.isEmpty()){
+        if (nacionalidad.isEmpty()){
             throw new IllegalArgumentException("La nacionalidad no debe estar vacia o no debe ser nula");
+        }
+        if (nacionalidad == null){
+            throw new NullPointerException("Error Nulo");
         }
         this.nacionalidad = nacionalidad;
     }
